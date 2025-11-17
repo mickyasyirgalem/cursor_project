@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Check } from 'lucide-react'
 
 const plans = [
@@ -44,8 +45,57 @@ const plans = [
 ]
 
 export default function Pricing() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          } else {
+            setIsVisible(false)
+          }
+        })
+      },
+      { threshold: 0.25 }
+    )
+
+    const current = sectionRef.current
+    if (current) observer.observe(current)
+
+    return () => {
+      if (current) observer.unobserve(current)
+    }
+  }, [])
+
+  const motionClass = (tierLabel) => {
+    if (!isVisible) {
+      if (tierLabel === 'Pro Tier') {
+        return 'opacity-0 scale-50 translate-y-6'
+      }
+      if (tierLabel === 'Basic Tier') {
+        return 'opacity-0 -translate-x-20 scale-95'
+      }
+      return 'opacity-0 translate-x-20 scale-95'
+    }
+
+    if (tierLabel === 'Pro Tier') {
+      return 'opacity-100 scale-105 translate-y-0'
+    }
+    return 'opacity-100 translate-x-0 scale-100'
+  }
+
+  const motionDelay = (tierLabel) => {
+    if (!isVisible) return 0
+    if (tierLabel === 'Pro Tier') return 200
+    if (tierLabel === 'Custom Tier') return 300
+    return 0
+  }
+
   return (
-    <section id="pricing" className="py-16 sm:py-20 lg:py-24">
+    <section id="pricing" ref={sectionRef} className="py-16 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm uppercase tracking-[0.2em] text-violet-600 dark:text-violet-300">
@@ -64,11 +114,14 @@ export default function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-3xl border p-6 sm:p-8 flex flex-col gap-6 transition-all duration-300 ease-out transform hover:scale-[1.02] hover:-translate-y-1 ${
+              className={`relative rounded-3xl border p-6 sm:p-8 flex flex-col gap-6 transition-all duration-700 ease-out transform hover:scale-[1.02] hover:-translate-y-1 ${
                 plan.featured
                   ? 'border-violet-500/70 bg-white/95 shadow-2xl shadow-violet-500/20 dark:bg-zinc-900'
                   : 'border-zinc-200/60 bg-white/90 dark:border-white/10 dark:bg-zinc-900'
-              }`}
+              } ${motionClass(plan.tierLabel)}`}
+              style={{
+                transitionDelay: `${motionDelay(plan.tierLabel)}ms`
+              }}
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="inline-flex items-center rounded-full border border-zinc-200 dark:border-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-zinc-600 dark:text-zinc-200/80">
