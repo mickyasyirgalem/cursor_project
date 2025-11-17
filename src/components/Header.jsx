@@ -20,6 +20,7 @@ export default function Header({ theme, toggleTheme }) {
 
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#services" className="hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Services</a>
+            <a href="#pricing" className="hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Pricing</a>
             <a href="#work" className="hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Work</a>
             <a href="#process" className="hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Process</a>
             <a href="#contact" className="hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Contact</a>
@@ -60,6 +61,7 @@ export default function Header({ theme, toggleTheme }) {
         <div className="md:hidden border-t dark:border-white/10 border-zinc-200/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 grid gap-2 text-sm">
             <a href="#services" className="py-2 hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Services</a>
+            <a href="#pricing" className="py-2 hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Pricing</a>
             <a href="#work" className="py-2 hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Work</a>
             <a href="#process" className="py-2 hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Process</a>
             <a href="#contact" className="py-2 hover:text-violet-700 dark:hover:text-violet-300 transition-colors text-zinc-700 dark:text-zinc-200">Contact</a>

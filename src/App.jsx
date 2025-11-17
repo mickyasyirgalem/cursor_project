@@ -3,6 +3,7 @@ import Header from './components/Header'
 import TopNotification from './components/TopNotification'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import Pricing from './components/Pricing'
 import Work from './components/Work'
 import Process from './components/Process'
 import Contact from './components/Contact'
@@ -21,6 +22,7 @@ function App() {
           <Header theme={theme} toggleTheme={toggleTheme} />
           <Hero />
           <Services />
+          <Pricing />
           <Work />
           <Process />
           <Contact />
