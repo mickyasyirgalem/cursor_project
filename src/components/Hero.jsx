@@ -1,8 +1,43 @@
+import { useEffect, useState } from 'react'
 import { ShieldCheck, LayoutDashboard, Briefcase, Clock, Award, Shield, Globe, ServerCog, ImagePlus, LayoutTemplate } from 'lucide-react'
 import frontWebsite from '../assets/frontwebsite.webp'
 import frontErp from '../assets/fronterp.webp'
 
 export default function Hero() {
+  const headlineFull = 'Websites and ERP systems that move your business forward'
+  const paragraphFull =
+    'AWRA ICT designs and delivers fast, accessible websites and robust ERP solutions. We tailor every build to your operations so you can scale with confidence.'
+  const [headlineText, setHeadlineText] = useState('')
+  const [paragraphText, setParagraphText] = useState('')
+
+  useEffect(() => {
+    const timeouts = []
+
+    const typeText = (text, setter, onComplete, speed = 12) => {
+      let index = 0
+      const type = () => {
+        setter(text.slice(0, index + 1))
+        if (index < text.length - 1) {
+          const id = setTimeout(() => {
+            index += 1
+            type()
+          }, speed)
+          timeouts.push(id)
+        } else if (onComplete) {
+          const id = setTimeout(onComplete, 80)
+          timeouts.push(id)
+        }
+      }
+      type()
+    }
+
+    typeText(headlineFull, setHeadlineText, () => typeText(paragraphFull, setParagraphText, null, 10))
+
+    return () => {
+      timeouts.forEach((id) => clearTimeout(id))
+    }
+  }, [headlineFull, paragraphFull])
+
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -26,12 +61,21 @@ export default function Hero() {
               <ShieldCheck className="w-3.5 h-3.5" />
               <span className="font-medium">Professional • Reliable • Scalable</span>
             </div>
-            <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight ">
-              Websites and ERP systems that move your business forward
+            <div className="sr-only">
+              <p>{headlineFull}</p>
+              <p>{paragraphFull}</p>
+            </div>
+            <h1
+              className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight min-h-[3.5rem]"
+              aria-live="polite"
+            >
+              {headlineText}
             </h1>
-            <p className="mt-5 text-base sm:text-lg max-w-2xl text-zinc-600 dark:text-zinc-200/80">
-              AWRA ICT designs and delivers fast, accessible websites and robust ERP solutions.
-              We tailor every build to your operations so you can scale with confidence.
+            <p
+              className="mt-5 text-base sm:text-lg max-w-2xl text-zinc-600 dark:text-zinc-200/80 min-h-[4.5rem]"
+              aria-live="polite"
+            >
+              {paragraphText}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href="#services" className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-md text-white dark:bg-white dark:text-black hover:opacity-90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 bg-zinc-900 ">
