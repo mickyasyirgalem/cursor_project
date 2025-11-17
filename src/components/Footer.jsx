@@ -1,8 +1,13 @@
 import { Mail, Linkedin, Github } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import logoGradient from '../assets/logo_gradient.png'
 
 export default function Footer() {
  const [year, setYear] = useState(2025)
+
+ const scrollToTop = () => {
+   window.scrollTo({ top: 0, behavior: 'smooth' })
+ }
 
  useEffect(() => {
  setYear(new Date().getFullYear())
@@ -13,9 +18,14 @@ export default function Footer() {
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
  <div className="flex items-center gap-3">
- <div className="h-7 w-7 rounded-md dark:bg-white text-white dark:text-black grid place-items-center ring-1 dark:ring-white/20 bg-zinc-900 ring-zinc-200/70 ">
- <span className="text-[11px] font-semibold tracking-[0.08em]">AW</span>
- </div>
+ <button
+   type="button"
+   onClick={scrollToTop}
+   className="focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 rounded-full"
+   aria-label="Scroll to top"
+ >
+   <img src={logoGradient} alt="AWRA ICT logo" className="h-9 w-9 object-contain" />
+ </button>
  <div className="text-sm text-zinc-600 dark:text-zinc-200/70">© {year} AWRA ICT. All rights reserved.</div>
  </div>
  <div className="flex items-center gap-4 text-zinc-600 dark:text-zinc-200/70">

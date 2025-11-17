@@ -1,4 +1,6 @@
 import { ShieldCheck, LayoutDashboard, Briefcase, Clock, Award, Shield, Globe, ServerCog, ImagePlus, LayoutTemplate } from 'lucide-react'
+import frontWebsite from '../assets/frontwebsite.webp'
+import frontErp from '../assets/fronterp.webp'
 
 export default function Hero() {
   return (
@@ -61,7 +63,7 @@ export default function Hero() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="group relative overflow-hidden rounded-xl border dark:border-white/10/20 bg-white hover:shadow-sm hover:-translate-y-0.5 transition transform border-zinc-200/70 dark:bg-black/50 ">
                 <div className="aspect-[16/10] bg-zinc-100 dark:bg-zinc-900">
-                  <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1200&auto=format&fit=crop" alt="Website design placeholder" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" />
+                  <img src={frontWebsite} alt="Website interface mockup" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
@@ -73,7 +75,7 @@ export default function Hero() {
               </div>
               <div className="group relative overflow-hidden rounded-xl border dark:border-white/10/20 bg-white hover:shadow-sm hover:-translate-y-0.5 transition transform border-zinc-200/70 dark:bg-black/50 ">
                 <div className="aspect-[16/10] bg-zinc-100 dark:bg-zinc-900">
-                  <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop" alt="ERP dashboard placeholder" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" />
+                  <img src={frontErp} alt="ERP analytics dashboard visualization" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">

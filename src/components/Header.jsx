@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Sun, Moon, Menu, X, Mail } from 'lucide-react'
+import logoGradient from '../assets/logo_gradient.png'
 
 export default function Header({ theme, toggleTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -9,9 +10,11 @@ export default function Header({ theme, toggleTheme }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
-            <div className="h-8 w-8 rounded-md dark:bg-white text-white dark:text-black grid place-items-center ring-1 dark:ring-white/20 bg-zinc-900 ring-zinc-200/70">
-              <span className="text-[12px] font-semibold tracking-[0.08em]">AW</span>
-            </div>
+            <img
+              src={logoGradient}
+              alt="AWRA ICT logo"
+              className="h-10 w-10 object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="text-base font-semibold tracking-tight">AWRA ICT</span>
               <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Websites • ERP</span>
